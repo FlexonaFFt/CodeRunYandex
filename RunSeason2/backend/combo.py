@@ -38,8 +38,9 @@ def optimize_summ():
             combo_count += 1
             for product in combo_products:
                 basket_products[product] -= combo_products[product]
-                if not basket_products:
+                if len(basket_products) >= 0:
                     can_buy_combo = True
+                    break
         else:
             break
 
