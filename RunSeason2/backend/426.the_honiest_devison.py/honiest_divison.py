@@ -48,15 +48,25 @@ def can_divive_string(str):
         else:
             char_count[char] = 1
 
-    max_guests = 1
-    length = len(str)
+    can_simple_divive = True
+    first_element_count = next(iter(char_count.values()))
+    for element_count in char_count.values():
+        if element_count != first_element_count:
+            can_simple_divive = False
+            break
 
-    for k in range(1, length + 1):
-        if length % k == 0:
-            if all(count % k == 0 for count in char_count.values()):
-                max_guests = k
+    if can_simple_divive:
+        rezult = 1
+        length = len(str)
 
-    return max_guests
+        for k in range(1, length + 1):
+            if length % k == 0:
+                if all(count % k == 0 for count in char_count.values()):
+                    rezult = k
+        return rezult
+    else:
+        return
+
 
 if __name__ == '__main__':
     string = str(input())
