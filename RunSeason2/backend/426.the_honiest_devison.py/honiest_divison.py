@@ -1,4 +1,16 @@
 '''
+Фактически, цель задачи это искать способ как разделить
+строку на равные подстроки таким образом, чтобы это мож
+но было сделать максимально эффективно. Например, строк
+у "ababbaab" можно разделить как на ["ab" ,"ab","ba","a
+b"], так и на ["abab","baab"]. Однако, нас будут интере
+совать лишь максимальное кол-во подстрок. Соответсвенно
+при такой входной строке ответ будет 4, так как получил
+ось максимально эффективно разделить строку на 4 подстр
+оки
+'''
+
+'''
 Решение ломается на 3ем тесте, а их 72+ :)
 
 from collections import Counter
@@ -65,7 +77,16 @@ def can_divive_string(str):
                     rezult = k
         return rezult
     else:
-        return
+        rezult = 1
+        length = len(str)
+
+        for k in range(1, length//2 + 1):
+            if length % k == 0:
+                substring = str[:k]
+                count = length // len(substring)
+                if substring * count == str:
+                    rezult = max(rezult, count)
+        return rezult
 
 
 if __name__ == '__main__':
