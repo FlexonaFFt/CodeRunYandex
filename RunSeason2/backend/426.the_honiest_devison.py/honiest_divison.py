@@ -78,14 +78,14 @@ def can_divive_string(str):
         return rezult
     else:
         rezult = 1
-        length = len(str)
+        '''length = len(str)
 
         for k in range(1, length//2 + 1):
             if length % k == 0:
                 substring = str[:k]
                 count = length // len(substring)
                 if substring * count == str:
-                    rezult = max(rezult, count)
+                    rezult = max(rezult, count)'''
         return rezult
 
 
